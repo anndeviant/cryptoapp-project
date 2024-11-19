@@ -1,0 +1,4 @@
+stKripto
+__pycache__
+tempCodeRunnerFile.py
+.env
