@@ -811,9 +811,9 @@ def crypto_page():
                             msg_container.success(
                                 "Key copied to clipboard successfully!", icon="📋"
                             )
-                        except:
+                        except pyperclip.PyperclipException as e:
                             msg_container.error(
-                                "Could not copy to clipboard. Please copy manually."
+                                f"Could not copy to clipboard: {str(e)}. Please copy manually."
                             )
 
             if st.button("Arsipkan! (Encrypt)", use_container_width=True):
@@ -1003,8 +1003,12 @@ def crypto_page():
                                     try:
                                         decoded_key, decoded_message = decode_lsb(img)
                                         st.success("Decryption successful!")
-                                        st.write("Original Image:")
-                                        st.image(img)
+                                        st.markdown("### Original Image:")
+                                        st.image(
+                                            img,
+                                            caption="Original Image",
+                                            use_column_width=True,
+                                        )
                                         # st.write("Decoded Message:", decoded_message)
                                         decoded_df = pd.DataFrame(
                                             {"Pesan Tersembunyi": [decoded_message]},
