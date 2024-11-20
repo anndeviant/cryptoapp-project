@@ -312,7 +312,7 @@ def decrypt_file(encrypted_bytes, key):
 
 # Pages
 def login_page():
-    st.markdown("# Pengarsipan Data Dokumen Kesehatan")
+    st.markdown("## Pengarsipan Data Dokumen Kesehatan")
     st.markdown("### :closed_lock_with_key: Login as Admin!")
     with st.form("login_form"):
         username = st.text_input("Username")
@@ -343,7 +343,7 @@ def login_page():
 
 
 def register_page():
-    st.markdown("# Pengarsipan Data Dokumen Kesehatan")
+    st.markdown("## Pengarsipan Data Dokumen Kesehatan")
     st.markdown("### :pencil2: Register as Admin!")
     with st.form("register_form"):
         new_username = st.text_input("Username")
