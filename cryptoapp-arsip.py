@@ -751,8 +751,15 @@ def crypto_page():
                             conn.commit()
 
                             st.success("Image encrypted and uploaded successfully!")
-                            st.image(encoded_image, caption="Gambar Hasil Steganografi")
-
+                            st.image(
+                                encoded_image,
+                                caption="Gambar Hasil Steganografi",
+                                use_column_width=True,
+                            )
+                            st.markdown(
+                                "<div style='text-align: center;'>Gambar Hasil Steganografi</div>",
+                                unsafe_allow_html=True,
+                            )
                         except Exception as e:
                             st.error(f"Upload failed: {str(e)}")
 
