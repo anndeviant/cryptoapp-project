@@ -929,6 +929,7 @@ def crypto_page():
                         rc4_decrypted = rc4_decrypt(encrypted_text, rc4_key)
                         final_decrypted = caesar_decrypt(rc4_decrypted, caesar_key)
                         st.success("Decryption successful!")
+                        st.markdown("### Hasil Pesan:")
                         decrypted_df = pd.DataFrame(
                             {"Keterangan": [final_decrypted]}, index=[1]
                         )
@@ -1025,6 +1026,7 @@ def crypto_page():
                                             use_column_width=True,
                                         )
                                         # st.write("Decoded Message:", decoded_message)
+                                        st.markdown("### Pesan Tersembunyi:")
                                         decoded_df = pd.DataFrame(
                                             {"Pesan Tersembunyi": [decoded_message]},
                                             index=[1],
