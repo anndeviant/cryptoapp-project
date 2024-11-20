@@ -312,7 +312,7 @@ def decrypt_file(encrypted_bytes, key):
 
 # Pages
 def login_page():
-    st.markdown("# Pengarsipan Data Dokumen Pasien")
+    st.markdown("# Pengarsipan Data Dokumen Kesehatan")
     st.markdown("### :closed_lock_with_key: Login as Admin!")
     with st.form("login_form"):
         username = st.text_input("Username")
@@ -343,7 +343,7 @@ def login_page():
 
 
 def register_page():
-    st.markdown("# Pengarsipan Data Dokumen Pasien")
+    st.markdown("# Pengarsipan Data Dokumen Kesehatan")
     st.markdown("### :pencil2: Register as Admin!")
     with st.form("register_form"):
         new_username = st.text_input("Username")
@@ -422,7 +422,7 @@ def admin_page():
         # Admin table
         st.markdown(
             "<div style='text-align: justify; margin-bottom: 10px;'>"
-            "Arsip data pesan adalah kumpulan pesan terenkripsi yang berisi informasi pasien yang telah dienkripsi menggunakan kombinasi metode Caesar Cipher dan RC4 untuk menjaga kerahasiaan data."
+            "Arsip data pesan adalah kumpulan pesan terenkripsi yang berisi informasi kesehatan yang telah dienkripsi menggunakan kombinasi metode Caesar Cipher dan RC4 untuk menjaga kerahasiaan data."
             "</div>",
             unsafe_allow_html=True,
         )
@@ -542,7 +542,7 @@ def admin_page():
         st.markdown("### Arsip Dokumen Kesehatan")
         st.markdown(
             "<div style='text-align: justify; margin-bottom: 10px;'>"
-            "Arsip dokumen kesehatan adalah kumpulan dokumen medis terenkripsi yang berisi data dan catatan penting terkait kondisi kesehatan pasien yang dijaga kerahasiaannya menggunakan teknik enkripsi yang aman."
+            "Arsip dokumen kesehatan adalah kumpulan dokumen medis terenkripsi yang berisi data dan catatan penting terkait kondisi kesehatan pasien atau data instansi yang dijaga kerahasiaannya menggunakan teknik enkripsi yang aman."
             "</div>",
             unsafe_allow_html=True,
         )
@@ -564,7 +564,7 @@ def admin_page():
                 encrypted_docs,
                 columns=[
                     "ID",
-                    "Nama Pasien",
+                    "Pemilik",
                     "Key",
                     "File URL",
                     "File Name",
@@ -644,7 +644,7 @@ def crypto_page():
             st.markdown(
                 """
                 <div style='text-align: justify; margin-bottom: 10px;'>
-                Arsip data kesehatan adalah kumpulan informasi penting yang berkaitan dengan kesehatan pasien, yaitu:
+                Arsip data kesehatan adalah kumpulan informasi penting yang berkaitan dengan kesehatan, yaitu:
                 <ul>
                     <li>Data Obat: Informasi mengenai obat-obatan.</li>
                     <li>Data Pasien: Informasi pribadi pasien dengan keluhannya.</li>
