@@ -802,34 +802,34 @@ def crypto_page():
                     new_key = generate_key()
                     st.session_state["doc_key"] = new_key.decode()
                     st.rerun()
-            with col2:
-                if "doc_key" in st.session_state:
-                    # Create custom HTML/JS button for clipboard
-                    js = f"""
-                    <script>
-                    async function copyToClipboard() {{
-                        try {{
-                            await navigator.clipboard.writeText('{st.session_state["doc_key"]}');
-                            document.getElementById('copy-status').innerHTML = '✅ Copied!';
-                            setTimeout(() => document.getElementById('copy-status').innerHTML = '', 2000);
-                        }} catch (err) {{
-                            document.getElementById('copy-status').innerHTML = '❌ Failed to copy';
-                            console.error('Failed to copy:', err);
-                        }}
-                    }}
-                    </script>
-                    <div style="text-align: center;">
-                        <button 
-                            onclick="copyToClipboard()"
-                            style="width: 100%; padding: 0.5rem; 
-                            cursor: pointer; background-color: #ffffff; 
-                            border: 1px solid #cccccc; border-radius: 4px;">
-                            Copy Key to Clipboard
-                        </button>
-                        <div id="copy-status" style="margin-top: 5px; color: #4CAF50;"></div>
-                    </div>
-                    """
-                    st.components.v1.html(js, height=80)
+            # with col2:
+            #     if "doc_key" in st.session_state:
+            #         # Create custom HTML/JS button for clipboard
+            #         js = f"""
+            #         <script>
+            #         async function copyToClipboard() {{
+            #             try {{
+            #                 await navigator.clipboard.writeText('{st.session_state["doc_key"]}');
+            #                 document.getElementById('copy-status').innerHTML = '✅ Copied!';
+            #                 setTimeout(() => document.getElementById('copy-status').innerHTML = '', 2000);
+            #             }} catch (err) {{
+            #                 document.getElementById('copy-status').innerHTML = '❌ Failed to copy';
+            #                 console.error('Failed to copy:', err);
+            #             }}
+            #         }}
+            #         </script>
+            #         <div style="text-align: center;">
+            #             <button 
+            #                 onclick="copyToClipboard()"
+            #                 style="width: 100%; padding: 0.5rem; 
+            #                 cursor: pointer; background-color: #ffffff; 
+            #                 border: 1px solid #cccccc; border-radius: 4px;">
+            #                 Copy Key to Clipboard
+            #             </button>
+            #             <div id="copy-status" style="margin-top: 5px; color: #4CAF50;"></div>
+            #         </div>
+            #         """
+            #         st.components.v1.html(js, height=80)
 
             if st.button("Arsipkan! (Encrypt)", use_container_width=True):
                 if patient_name and uploaded_file and key:
