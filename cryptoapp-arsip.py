@@ -629,7 +629,7 @@ def admin_page():
 
 
 def crypto_page():
-    st.title("Pengarsipan Data Kesehatan")
+    st.markdown("# 🏥 Pengarsipan Data Kesehatan")
     action = st.sidebar.selectbox(
         "Select Action", ["Arsipkan (Encrypt)", "Ambil Arsip (Decrypt)"]
     )
@@ -1180,6 +1180,10 @@ def main():
         st.session_state.page = "login"
 
     if st.session_state.logged_in:
+        st.sidebar.image(
+            "security.png",
+            width=110,  
+        )
         st.sidebar.title("Navigation")
         menu = ["Store Document", "Manage Arsip"]
         choice = st.sidebar.selectbox("Select Menu", menu)
