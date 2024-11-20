@@ -787,7 +787,7 @@ def crypto_page():
                 "Encryption Key",
                 value=st.session_state.get("doc_key", ""),
                 type="password",
-                disabled=True,
+                disabled=False,
             )
 
             # Create two columns for buttons
