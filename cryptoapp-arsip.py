@@ -12,7 +12,7 @@ import secrets
 from io import BytesIO
 import requests
 from cryptography.fernet import Fernet
-import pyperclip
+# import pyperclip
 
 # Load environment variables
 PIN = "Annas#123"
@@ -804,17 +804,19 @@ def crypto_page():
                     st.rerun()
             with col2:
                 # Copy to clipboard button
-                if col2.button("Copy Key to Clipboard", use_container_width=True):
-                    if "doc_key" in st.session_state:
-                        try:
-                            pyperclip.copy(st.session_state["doc_key"])
-                            msg_container.success(
-                                "Key copied to clipboard successfully!", icon="📋"
-                            )
-                        except pyperclip.PyperclipException as e:
-                            msg_container.error(
-                                f"Could not copy to clipboard: {str(e)}. Please copy manually."
-                            )
+                if "doc_key" in st.session_state:
+                    js_code = f"""
+                    <script>
+                    function copyToClipboard() {{
+                        const text = '{st.session_state["doc_key"]}';
+                        navigator.clipboard.writeText(text)
+                            .then(() => console.log('Copied to clipboard'))
+                            .catch(err => console.error('Failed to copy:', err));
+                    }}
+                    </script>
+                    <button onclick="copyToClipboard()" style="width:100%">Copy Key to Clipboard</button>
+                    """
+                    st.components.v1.html(js_code, height=40)
 
             if st.button("Arsipkan! (Encrypt)", use_container_width=True):
                 if patient_name and uploaded_file and key:
