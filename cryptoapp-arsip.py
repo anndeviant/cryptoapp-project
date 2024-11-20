@@ -309,6 +309,19 @@ def decrypt_file(encrypted_bytes, key):
     f = Fernet(key)
     return f.decrypt(encrypted_bytes)
 
+# Add this helper function at the top level
+def convert_to_png(image):
+    """Convert any image to PNG format"""
+    if image.format in ['JPEG', 'JPG']:
+        # Convert to RGB if not already
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+        # Create PNG in memory
+        png_buffer = BytesIO()
+        image.save(png_buffer, format='PNG')
+        png_buffer.seek(0)
+        return Image.open(png_buffer)
+    return image
 
 # Pages
 def login_page():
@@ -710,7 +723,7 @@ def crypto_page():
                 random_key = secrets.token_hex(8)  # 16 characters
                 st.session_state["random_key"] = random_key
                 st.rerun()
-            image = st.file_uploader("Upload Image", type=["png"])  # Restrict to PNG
+            image = st.file_uploader("Upload Image", type=["png", "jpg", "jpeg"])  # Allow JPG/JPEG
 
             if st.button("Arsipkan! (Encrypt)", use_container_width=True):
                 if all([image, secret_message, key, patient_name]):
@@ -720,9 +733,10 @@ def crypto_page():
                         if img.mode != "RGB":
                             img = img.convert("RGB")
 
+                        # Convert to PNG if needed
+                        img = convert_to_png(img)
                         # Encode message
                         encoded_image = encode_lsb(img, secret_message, key)
-
                         # Save as PNG to avoid compression
                         img_byte_arr = BytesIO()
                         encoded_image.save(img_byte_arr, format="PNG")
