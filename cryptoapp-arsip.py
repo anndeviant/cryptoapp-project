@@ -289,7 +289,7 @@ def decode_lsb(encoded_image):
                             continue
 
                     # Safety check
-                    if len(decoded_text) > 1000:  # Reduced from 10000
+                    if len(decoded_text) > 100000:  # Reduced from 10000
                         raise ValueError("No valid message found")
 
     raise ValueError("No hidden message found")
