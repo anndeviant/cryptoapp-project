@@ -1185,12 +1185,12 @@ def main():
             width=110,  
         )
         st.sidebar.title("Navigation")
-        menu = ["Store Document", "Manage Arsip"]
+        menu = ["Document Store", "Manage Arsip"]
         choice = st.sidebar.selectbox("Select Menu", menu)
 
         if choice == "Manage Arsip":
             admin_page()
-        elif choice == "Store Document":
+        elif choice == "Document Store":
             crypto_page()
 
         # Add Log Out button at the bottom of the sidebar
