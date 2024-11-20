@@ -753,7 +753,6 @@ def crypto_page():
                             st.success("Image encrypted and uploaded successfully!")
                             st.image(
                                 encoded_image,
-                                caption="Gambar Hasil Steganografi",
                                 use_column_width=True,
                             )
                             st.markdown(
