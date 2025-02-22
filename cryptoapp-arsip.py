@@ -19,9 +19,9 @@ PIN = "Annas#123"
 
 # Add Cloudinary configuration
 cloudinary.config(
-    cloud_name="ddeff44yv",
-    api_key="149435764148321",
-    api_secret="IndKSdSVIxDnCU20WOHDiPf_H0c",
+    cloud_name="",
+    api_key="",
+    api_secret="",
 )
 
 # Database connection~
